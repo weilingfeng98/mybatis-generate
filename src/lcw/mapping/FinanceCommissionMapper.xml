@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lcw.dao.FinanceCommissionMapper">
+  <resultMap id="BaseResultMap" type="lcw.model.FinanceCommission">
+    <id column="commission_id" jdbcType="BIGINT" property="commissionId" />
+    <result column="business_id" jdbcType="BIGINT" property="businessId" />
+    <result column="order_sn" jdbcType="VARCHAR" property="orderSn" />
+    <result column="order_source" jdbcType="BIT" property="orderSource" />
+    <result column="source_type" jdbcType="BIT" property="sourceType" />
+    <result column="order_type" jdbcType="BIT" property="orderType" />
+    <result column="shop_type" jdbcType="BIT" property="shopType" />
+    <result column="bill_no" jdbcType="VARCHAR" property="billNo" />
+    <result column="storage_type" jdbcType="BIT" property="storageType" />
+    <result column="supplier_no" jdbcType="VARCHAR" property="supplierNo" />
+    <result column="supplier_nm" jdbcType="VARCHAR" property="supplierNm" />
+    <result column="store_no" jdbcType="VARCHAR" property="storeNo" />
+    <result column="store_nm" jdbcType="VARCHAR" property="storeNm" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="contract_id" jdbcType="BIGINT" property="contractId" />
+    <result column="out_warehouse_time" jdbcType="TIMESTAMP" property="outWarehouseTime" />
+    <result column="sign_time" jdbcType="TIMESTAMP" property="signTime" />
+    <result column="goods_amount" jdbcType="DECIMAL" property="goodsAmount" />
+    <result column="transport_amount" jdbcType="DECIMAL" property="transportAmount" />
+    <result column="transport_amount_4_store" jdbcType="DECIMAL" property="transportAmount4Store" />
+    <result column="order_amount" jdbcType="DECIMAL" property="orderAmount" />
+    <result column="activity_amount_4_platform" jdbcType="DECIMAL" property="activityAmount4Platform" />
+    <result column="coupon_amount_4_platform" jdbcType="DECIMAL" property="couponAmount4Platform" />
+    <result column="activity_amount_4_supplier" jdbcType="DECIMAL" property="activityAmount4Supplier" />
+    <result column="coupon_amount_4_supplier" jdbcType="DECIMAL" property="couponAmount4Supplier" />
+    <result column="cash_on_delivery_amount" jdbcType="DECIMAL" property="cashOnDeliveryAmount" />
+    <result column="third_payment_amount" jdbcType="DECIMAL" property="thirdPaymentAmount" />
+    <result column="prepaid_card_payment_amount" jdbcType="DECIMAL" property="prepaidCardPaymentAmount" />
+    <result column="points_pay_amount" jdbcType="DECIMAL" property="pointsPayAmount" />
+    <result column="server_charge" jdbcType="DECIMAL" property="serverCharge" />
+    <result column="need_invoice" jdbcType="DECIMAL" property="needInvoice" />
+    <result column="supplier_settlement_amount" jdbcType="DECIMAL" property="supplierSettlementAmount" />
+    <result column="distribute_commission_amount" jdbcType="DECIMAL" property="distributeCommissionAmount" />
+    <result column="distribute_raise_price_amount" jdbcType="DECIMAL" property="distributeRaisePriceAmount" />
+    <result column="store_ledger_settlement_amount" jdbcType="DECIMAL" property="storeLedgerSettlementAmount" />
+    <result column="settlement_date" jdbcType="DATE" property="settlementDate" />
+    <result column="settlement_status" jdbcType="BIT" property="settlementStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    commission_id, business_id, order_sn, order_source, source_type, order_type, shop_type, 
+    bill_no, storage_type, supplier_no, supplier_nm, store_no, store_nm, pay_time, contract_id, 
+    out_warehouse_time, sign_time, goods_amount, transport_amount, transport_amount_4_store, 
+    order_amount, activity_amount_4_platform, coupon_amount_4_platform, activity_amount_4_supplier, 
+    coupon_amount_4_supplier, cash_on_delivery_amount, third_payment_amount, prepaid_card_payment_amount, 
+    points_pay_amount, server_charge, need_invoice, supplier_settlement_amount, distribute_commission_amount, 
+    distribute_raise_price_amount, store_ledger_settlement_amount, settlement_date, settlement_status, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_finance_commission
+    where commission_id = #{commissionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_finance_commission
+    where commission_id = #{commissionId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lcw.model.FinanceCommission">
+    insert into t_finance_commission (commission_id, business_id, order_sn, 
+      order_source, source_type, order_type, 
+      shop_type, bill_no, storage_type, 
+      supplier_no, supplier_nm, store_no, 
+      store_nm, pay_time, contract_id, 
+      out_warehouse_time, sign_time, goods_amount, 
+      transport_amount, transport_amount_4_store, 
+      order_amount, activity_amount_4_platform, coupon_amount_4_platform, 
+      activity_amount_4_supplier, coupon_amount_4_supplier, 
+      cash_on_delivery_amount, third_payment_amount, 
+      prepaid_card_payment_amount, points_pay_amount, 
+      server_charge, need_invoice, supplier_settlement_amount, 
+      distribute_commission_amount, distribute_raise_price_amount, 
+      store_ledger_settlement_amount, settlement_date, 
+      settlement_status, create_time)
+    values (#{commissionId,jdbcType=BIGINT}, #{businessId,jdbcType=BIGINT}, #{orderSn,jdbcType=VARCHAR}, 
+      #{orderSource,jdbcType=BIT}, #{sourceType,jdbcType=BIT}, #{orderType,jdbcType=BIT}, 
+      #{shopType,jdbcType=BIT}, #{billNo,jdbcType=VARCHAR}, #{storageType,jdbcType=BIT}, 
+      #{supplierNo,jdbcType=VARCHAR}, #{supplierNm,jdbcType=VARCHAR}, #{storeNo,jdbcType=VARCHAR}, 
+      #{storeNm,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP}, #{contractId,jdbcType=BIGINT}, 
+      #{outWarehouseTime,jdbcType=TIMESTAMP}, #{signTime,jdbcType=TIMESTAMP}, #{goodsAmount,jdbcType=DECIMAL}, 
+      #{transportAmount,jdbcType=DECIMAL}, #{transportAmount4Store,jdbcType=DECIMAL}, 
+      #{orderAmount,jdbcType=DECIMAL}, #{activityAmount4Platform,jdbcType=DECIMAL}, #{couponAmount4Platform,jdbcType=DECIMAL}, 
+      #{activityAmount4Supplier,jdbcType=DECIMAL}, #{couponAmount4Supplier,jdbcType=DECIMAL}, 
+      #{cashOnDeliveryAmount,jdbcType=DECIMAL}, #{thirdPaymentAmount,jdbcType=DECIMAL}, 
+      #{prepaidCardPaymentAmount,jdbcType=DECIMAL}, #{pointsPayAmount,jdbcType=DECIMAL}, 
+      #{serverCharge,jdbcType=DECIMAL}, #{needInvoice,jdbcType=DECIMAL}, #{supplierSettlementAmount,jdbcType=DECIMAL}, 
+      #{distributeCommissionAmount,jdbcType=DECIMAL}, #{distributeRaisePriceAmount,jdbcType=DECIMAL}, 
+      #{storeLedgerSettlementAmount,jdbcType=DECIMAL}, #{settlementDate,jdbcType=DATE}, 
+      #{settlementStatus,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="lcw.model.FinanceCommission">
+    insert into t_finance_commission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commissionId != null">
+        commission_id,
+      </if>
+      <if test="businessId != null">
+        business_id,
+      </if>
+      <if test="orderSn != null">
+        order_sn,
+      </if>
+      <if test="orderSource != null">
+        order_source,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="shopType != null">
+        shop_type,
+      </if>
+      <if test="billNo != null">
+        bill_no,
+      </if>
+      <if test="storageType != null">
+        storage_type,
+      </if>
+      <if test="supplierNo != null">
+        supplier_no,
+      </if>
+      <if test="supplierNm != null">
+        supplier_nm,
+      </if>
+      <if test="storeNo != null">
+        store_no,
+      </if>
+      <if test="storeNm != null">
+        store_nm,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="contractId != null">
+        contract_id,
+      </if>
+      <if test="outWarehouseTime != null">
+        out_warehouse_time,
+      </if>
+      <if test="signTime != null">
+        sign_time,
+      </if>
+      <if test="goodsAmount != null">
+        goods_amount,
+      </if>
+      <if test="transportAmount != null">
+        transport_amount,
+      </if>
+      <if test="transportAmount4Store != null">
+        transport_amount_4_store,
+      </if>
+      <if test="orderAmount != null">
+        order_amount,
+      </if>
+      <if test="activityAmount4Platform != null">
+        activity_amount_4_platform,
+      </if>
+      <if test="couponAmount4Platform != null">
+        coupon_amount_4_platform,
+      </if>
+      <if test="activityAmount4Supplier != null">
+        activity_amount_4_supplier,
+      </if>
+      <if test="couponAmount4Supplier != null">
+        coupon_amount_4_supplier,
+      </if>
+      <if test="cashOnDeliveryAmount != null">
+        cash_on_delivery_amount,
+      </if>
+      <if test="thirdPaymentAmount != null">
+        third_payment_amount,
+      </if>
+      <if test="prepaidCardPaymentAmount != null">
+        prepaid_card_payment_amount,
+      </if>
+      <if test="pointsPayAmount != null">
+        points_pay_amount,
+      </if>
+      <if test="serverCharge != null">
+        server_charge,
+      </if>
+      <if test="needInvoice != null">
+        need_invoice,
+      </if>
+      <if test="supplierSettlementAmount != null">
+        supplier_settlement_amount,
+      </if>
+      <if test="distributeCommissionAmount != null">
+        distribute_commission_amount,
+      </if>
+      <if test="distributeRaisePriceAmount != null">
+        distribute_raise_price_amount,
+      </if>
+      <if test="storeLedgerSettlementAmount != null">
+        store_ledger_settlement_amount,
+      </if>
+      <if test="settlementDate != null">
+        settlement_date,
+      </if>
+      <if test="settlementStatus != null">
+        settlement_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commissionId != null">
+        #{commissionId,jdbcType=BIGINT},
+      </if>
+      <if test="businessId != null">
+        #{businessId,jdbcType=BIGINT},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSource != null">
+        #{orderSource,jdbcType=BIT},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=BIT},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=BIT},
+      </if>
+      <if test="shopType != null">
+        #{shopType,jdbcType=BIT},
+      </if>
+      <if test="billNo != null">
+        #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storageType != null">
+        #{storageType,jdbcType=BIT},
+      </if>
+      <if test="supplierNo != null">
+        #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNm != null">
+        #{supplierNm,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNo != null">
+        #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNm != null">
+        #{storeNm,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=BIGINT},
+      </if>
+      <if test="outWarehouseTime != null">
+        #{outWarehouseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signTime != null">
+        #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsAmount != null">
+        #{goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transportAmount != null">
+        #{transportAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transportAmount4Store != null">
+        #{transportAmount4Store,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null">
+        #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="activityAmount4Platform != null">
+        #{activityAmount4Platform,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmount4Platform != null">
+        #{couponAmount4Platform,jdbcType=DECIMAL},
+      </if>
+      <if test="activityAmount4Supplier != null">
+        #{activityAmount4Supplier,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmount4Supplier != null">
+        #{couponAmount4Supplier,jdbcType=DECIMAL},
+      </if>
+      <if test="cashOnDeliveryAmount != null">
+        #{cashOnDeliveryAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdPaymentAmount != null">
+        #{thirdPaymentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="prepaidCardPaymentAmount != null">
+        #{prepaidCardPaymentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="pointsPayAmount != null">
+        #{pointsPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="serverCharge != null">
+        #{serverCharge,jdbcType=DECIMAL},
+      </if>
+      <if test="needInvoice != null">
+        #{needInvoice,jdbcType=DECIMAL},
+      </if>
+      <if test="supplierSettlementAmount != null">
+        #{supplierSettlementAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="distributeCommissionAmount != null">
+        #{distributeCommissionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="distributeRaisePriceAmount != null">
+        #{distributeRaisePriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="storeLedgerSettlementAmount != null">
+        #{storeLedgerSettlementAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="settlementDate != null">
+        #{settlementDate,jdbcType=DATE},
+      </if>
+      <if test="settlementStatus != null">
+        #{settlementStatus,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lcw.model.FinanceCommission">
+    update t_finance_commission
+    <set>
+      <if test="businessId != null">
+        business_id = #{businessId,jdbcType=BIGINT},
+      </if>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSource != null">
+        order_source = #{orderSource,jdbcType=BIT},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=BIT},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=BIT},
+      </if>
+      <if test="shopType != null">
+        shop_type = #{shopType,jdbcType=BIT},
+      </if>
+      <if test="billNo != null">
+        bill_no = #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storageType != null">
+        storage_type = #{storageType,jdbcType=BIT},
+      </if>
+      <if test="supplierNo != null">
+        supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNm != null">
+        supplier_nm = #{supplierNm,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNo != null">
+        store_no = #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNm != null">
+        store_nm = #{storeNm,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=BIGINT},
+      </if>
+      <if test="outWarehouseTime != null">
+        out_warehouse_time = #{outWarehouseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signTime != null">
+        sign_time = #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsAmount != null">
+        goods_amount = #{goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transportAmount != null">
+        transport_amount = #{transportAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transportAmount4Store != null">
+        transport_amount_4_store = #{transportAmount4Store,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null">
+        order_amount = #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="activityAmount4Platform != null">
+        activity_amount_4_platform = #{activityAmount4Platform,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmount4Platform != null">
+        coupon_amount_4_platform = #{couponAmount4Platform,jdbcType=DECIMAL},
+      </if>
+      <if test="activityAmount4Supplier != null">
+        activity_amount_4_supplier = #{activityAmount4Supplier,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmount4Supplier != null">
+        coupon_amount_4_supplier = #{couponAmount4Supplier,jdbcType=DECIMAL},
+      </if>
+      <if test="cashOnDeliveryAmount != null">
+        cash_on_delivery_amount = #{cashOnDeliveryAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdPaymentAmount != null">
+        third_payment_amount = #{thirdPaymentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="prepaidCardPaymentAmount != null">
+        prepaid_card_payment_amount = #{prepaidCardPaymentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="pointsPayAmount != null">
+        points_pay_amount = #{pointsPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="serverCharge != null">
+        server_charge = #{serverCharge,jdbcType=DECIMAL},
+      </if>
+      <if test="needInvoice != null">
+        need_invoice = #{needInvoice,jdbcType=DECIMAL},
+      </if>
+      <if test="supplierSettlementAmount != null">
+        supplier_settlement_amount = #{supplierSettlementAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="distributeCommissionAmount != null">
+        distribute_commission_amount = #{distributeCommissionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="distributeRaisePriceAmount != null">
+        distribute_raise_price_amount = #{distributeRaisePriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="storeLedgerSettlementAmount != null">
+        store_ledger_settlement_amount = #{storeLedgerSettlementAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="settlementDate != null">
+        settlement_date = #{settlementDate,jdbcType=DATE},
+      </if>
+      <if test="settlementStatus != null">
+        settlement_status = #{settlementStatus,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where commission_id = #{commissionId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lcw.model.FinanceCommission">
+    update t_finance_commission
+    set business_id = #{businessId,jdbcType=BIGINT},
+      order_sn = #{orderSn,jdbcType=VARCHAR},
+      order_source = #{orderSource,jdbcType=BIT},
+      source_type = #{sourceType,jdbcType=BIT},
+      order_type = #{orderType,jdbcType=BIT},
+      shop_type = #{shopType,jdbcType=BIT},
+      bill_no = #{billNo,jdbcType=VARCHAR},
+      storage_type = #{storageType,jdbcType=BIT},
+      supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      supplier_nm = #{supplierNm,jdbcType=VARCHAR},
+      store_no = #{storeNo,jdbcType=VARCHAR},
+      store_nm = #{storeNm,jdbcType=VARCHAR},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      contract_id = #{contractId,jdbcType=BIGINT},
+      out_warehouse_time = #{outWarehouseTime,jdbcType=TIMESTAMP},
+      sign_time = #{signTime,jdbcType=TIMESTAMP},
+      goods_amount = #{goodsAmount,jdbcType=DECIMAL},
+      transport_amount = #{transportAmount,jdbcType=DECIMAL},
+      transport_amount_4_store = #{transportAmount4Store,jdbcType=DECIMAL},
+      order_amount = #{orderAmount,jdbcType=DECIMAL},
+      activity_amount_4_platform = #{activityAmount4Platform,jdbcType=DECIMAL},
+      coupon_amount_4_platform = #{couponAmount4Platform,jdbcType=DECIMAL},
+      activity_amount_4_supplier = #{activityAmount4Supplier,jdbcType=DECIMAL},
+      coupon_amount_4_supplier = #{couponAmount4Supplier,jdbcType=DECIMAL},
+      cash_on_delivery_amount = #{cashOnDeliveryAmount,jdbcType=DECIMAL},
+      third_payment_amount = #{thirdPaymentAmount,jdbcType=DECIMAL},
+      prepaid_card_payment_amount = #{prepaidCardPaymentAmount,jdbcType=DECIMAL},
+      points_pay_amount = #{pointsPayAmount,jdbcType=DECIMAL},
+      server_charge = #{serverCharge,jdbcType=DECIMAL},
+      need_invoice = #{needInvoice,jdbcType=DECIMAL},
+      supplier_settlement_amount = #{supplierSettlementAmount,jdbcType=DECIMAL},
+      distribute_commission_amount = #{distributeCommissionAmount,jdbcType=DECIMAL},
+      distribute_raise_price_amount = #{distributeRaisePriceAmount,jdbcType=DECIMAL},
+      store_ledger_settlement_amount = #{storeLedgerSettlementAmount,jdbcType=DECIMAL},
+      settlement_date = #{settlementDate,jdbcType=DATE},
+      settlement_status = #{settlementStatus,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where commission_id = #{commissionId,jdbcType=BIGINT}
+  </update>
+</mapper>

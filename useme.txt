@@ -1,0 +1,1 @@
+点击右侧的插件，双击mybatis-generator:generate
